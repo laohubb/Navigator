@@ -53,6 +53,8 @@ $('.addButton').on('click',()=>{
 
 })
 
+
+
 $(document).on('keypress',(event)=>{
     const key=event.key.toUpperCase()
     // window.open()
@@ -63,7 +65,9 @@ $(document).on('keypress',(event)=>{
     })
 });
 
-
+$('.searchDiv').on('click',()=>{
+    $(document).off('keypress')
+})
 
 window.onbeforeunload=()=>{
     const localList=JSON.stringify(hashMap)

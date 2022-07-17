@@ -149,9 +149,13 @@ $(document).on('keypress', function (event) {
     });
 });
 
+$('.searchDiv').on('click', function () {
+    $(document).off('keypress');
+});
+
 window.onbeforeunload = function () {
     var localList = JSON.stringify(hashMap);
     localStorage.setItem('urlList', localList);
 };
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.1b29c41d.map
+//# sourceMappingURL=main.e3778354.map
