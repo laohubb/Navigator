@@ -7,7 +7,7 @@ const hashMap=localList||
     [
         {logo:"B",url:"https://www.bilibili.com"},
         {logo:"G",url:"https://www.google.com/"},
-        {logo:"D",url:"https://movie.douban.com/"},
+        {logo:"D",url:"https://www.douban.com/"},
         {logo:"Z",url:"https://www.zhihu.com/"},
         {logo:"N",url:"https://news.163.com/"},
 
@@ -49,16 +49,25 @@ $('.addButton').on('click',()=>{
     if(url.indexOf('http')!==1){
         url='https://'+url
     }
-
     hashMap.push({logo:url[0],url:url})
-    render()
 
 })
+
+$(document).on('keypress',(event)=>{
+    const key=event.key.toUpperCase()
+    // window.open()
+    hashMap.forEach((item)=>{
+       if(item.logo===key){
+           window.open(item.url)
+       }
+    })
+});
+
+
 
 window.onbeforeunload=()=>{
     const localList=JSON.stringify(hashMap)
     localStorage.setItem('urlList',localList)
 }
-
 
 
