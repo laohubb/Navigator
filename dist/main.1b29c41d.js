@@ -109,7 +109,7 @@ var $lastLi = $siteList.find('li.last');
 
 var localList = JSON.parse(localStorage.getItem('urlList'));
 
-var hashMap = localList || [{ logo: "B", url: "https://www.bilibili.com" }, { logo: "G", url: "https://www.google.com/" }, { logo: "D", url: "https://movie.douban.com/" }, { logo: "Z", url: "https://www.zhihu.com/" }, { logo: "N", url: "https://news.163.com/" }];
+var hashMap = localList || [{ logo: "B", url: "https://www.bilibili.com" }, { logo: "G", url: "https://www.google.com/" }, { logo: "D", url: "https://www.douban.com/" }, { logo: "Z", url: "https://www.zhihu.com/" }, { logo: "N", url: "https://news.163.com/" }];
 
 var simplyfyUrl = function simplyfyUrl(url) {
     return url.replace('https://', '').replace('http://', '').replace('www.', '').replace(/\.com.*|\.cn.*/, '');
@@ -136,9 +136,17 @@ $('.addButton').on('click', function () {
     if (url.indexOf('http') !== 1) {
         url = 'https://' + url;
     }
-
     hashMap.push({ logo: url[0], url: url });
-    render();
+});
+
+$(document).on('keypress', function (event) {
+    var key = event.key.toUpperCase();
+    // window.open()
+    hashMap.forEach(function (item) {
+        if (item.logo === key) {
+            window.open(item.url);
+        }
+    });
 });
 
 window.onbeforeunload = function () {
@@ -146,4 +154,4 @@ window.onbeforeunload = function () {
     localStorage.setItem('urlList', localList);
 };
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.5a464f51.map
+//# sourceMappingURL=main.1b29c41d.map
